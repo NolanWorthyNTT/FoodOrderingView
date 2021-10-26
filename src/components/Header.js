@@ -1,9 +1,14 @@
+import { Link } from 'react-router-dom';
 
-
-function Header() {
+function Header(props) {
     return(
         <div>
-            <h1>Food Ordering App</h1>
+            <header>
+                <h1 className="top">Food Ordering App</h1>
+                <nav>
+                    {props.role === 'no user' || props.role === '' ? '' : props.username + ' - ' + <Link to='/'>Logout</Link>}
+                </nav>
+            </header>
         </div>
     );
 }
