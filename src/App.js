@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+import Login from './components/Login.js';
+import Menu from './components/Menu.js';
 
 function App() {
+  const [role, setRole] = useState('');
+  const [username, setUsername] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header role={role} username={username} />
+        <Switch>
+          <Route exact path='/'>
+            <Login role={role} setRole={setRole} username={username} setUsername={setUsername} />
+          </Route>
+
+          <Route path='/menu'>
+            <Menu />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
