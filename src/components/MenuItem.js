@@ -27,7 +27,7 @@ function MenuItem(props) {
         var existingIndex = props.cart.findIndex((o) => o.dishId === props.dishId);
         if(existingIndex > -1) {
             // if item being added to cart is already in cart, add to its quantity
-            var localCart = props.cart;
+            var localCart = props.cart.slice();
             localCart[existingIndex].qtyToBuy += qty;
             props.setCart(localCart);
         } else {

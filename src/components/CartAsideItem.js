@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function CartAsideItem(props) {
     const [cartQty, setCartQty] = useState(props.qtyToBuy);
 
+    useEffect(() => {
+        var existingIndex = props.cart.findIndex((o) => o.dishId === props.dishId);
+        setCartQty(props.cart[existingIndex].qtyToBuy);
+    }, [props.cart, props.dishId]);
     
     const onMinusClick = () => {
         if(cartQty > 1) {
