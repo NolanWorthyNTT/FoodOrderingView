@@ -48,7 +48,18 @@ function Login(props) {
             "username": props.username,
             "password": password
         }).then(responseData => {
-            props.setRole(responseData.response);
+            if(responseData.userId === -1) {
+                // if no match for user, indicate accordingly
+                props.setRole('no user');
+            } else {
+                // if match for user, set states to user's info
+                props.setUserId(responseData.userId);
+                if(responseData.admin === false) {
+                    props.setRole('user');
+                } else {
+                    props.setRole('admin');
+                }
+            }
         });
     }
 
