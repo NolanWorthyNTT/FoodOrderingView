@@ -6,6 +6,7 @@ function Header(props) {
     const onClick = (e) => {
         props.setRole('');
         props.setUsername('');
+        props.setUserId(-1);
         history.push('/');
     }
 
