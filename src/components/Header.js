@@ -16,7 +16,7 @@ function Header(props) {
     }
 
     return(
-        <div>
+        <div className="header">
             <header>
                 <h1 className="top">Food Ordering App</h1>
                 <nav>
