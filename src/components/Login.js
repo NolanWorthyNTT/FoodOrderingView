@@ -7,27 +7,15 @@ function Login(props) {
 
     // runs when props.role is updated. props.setRole() is async
     useEffect(() => {
-        if(props.role !== 'no user') {
-            //console.log('promise resolved. role: ' + props.role);
-
-            // if logged in successfully, reset state
-            //props.setUsername('');
-            //setPassword('');
-
-            //console.log(props.role);
-            if(props.role === 'user') {
-                //console.log('push');
-                history.push('/menu');
-            } else {
-
-            }
+        if(props.role === 'user') {
+            history.push('/menu');
+        } else if (props.role === 'admin') {
+            history.push('/admin');
         }
-    }, [props.role]);
+    }, [props.role, history]);
 
     const sendHttpRequest = (method, url, data) => {
         const promise = new Promise((resolve, reject) => {
-            console.log('request sent');
-
             const xhr = new XMLHttpRequest();
             xhr.open(method, url);
 
