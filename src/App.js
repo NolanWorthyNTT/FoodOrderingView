@@ -10,24 +10,25 @@ import Admin from './components/Admin.js';
 function App() {
   const [role, setRole] = useState('');
   const [username, setUsername] = useState('');
+  const [cart, setCart] = useState([]);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Header role={role} setRole={setRole} username={username} setUsername={setUsername} />
-        <Switch>
-          <Route exact path='/'>
-            <Login role={role} setRole={setRole} username={username} setUsername={setUsername} />
-          </Route>
+          <Switch>
+            <Route exact path='/'>
+              <Login role={role} setRole={setRole} username={username} setUsername={setUsername} />
+            </Route>
 
-          <Route path='/admin'>
-            <Admin />
-          </Route>
+            <Route path='/admin'>
+              <Admin />
+            </Route>
 
-          <Route path='/menu'>
-            <Menu />
-          </Route>
-        </Switch>
+            <Route path='/menu'>
+              <Menu cart={cart} setCart={setCart} />
+            </Route>
+          </Switch>
         <Footer />
       </div>
     </BrowserRouter>
