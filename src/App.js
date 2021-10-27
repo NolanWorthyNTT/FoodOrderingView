@@ -11,15 +11,16 @@ import Orders from './components/Orders.js';
 function App() {
   const [role, setRole] = useState('');
   const [username, setUsername] = useState('');
+  const [userId, setUserId] = useState(-1);
   const [cart, setCart] = useState([]);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Header role={role} setRole={setRole} username={username} setUsername={setUsername} />
+        <Header role={role} setRole={setRole} username={username} setUsername={setUsername} setUserId={setUserId} />
           <Switch>
             <Route exact path='/'>
-              <Login role={role} setRole={setRole} username={username} setUsername={setUsername} />
+              <Login role={role} setRole={setRole} username={username} setUsername={setUsername} userId={userId} setUserId={setUserId} />
             </Route>
 
             <Route path='/admin'>
