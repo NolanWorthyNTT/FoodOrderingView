@@ -46,7 +46,7 @@ function MenuItem(props) {
     return (
         <div className="menu-grid-item">
             <img src={props.imageUrl} alt={props.dishName} className="menu-item-image" />
-            <h5>{props.dishName} - ${props.pricePer}</h5>
+            <h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5>
             <p>{props.ingredients}</p>
             <div className="menu-item-footer">
                 <button type="button" className="menu-item-minus-btn" onClick={onMinusClick}>-</button>
