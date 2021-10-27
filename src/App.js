@@ -6,6 +6,7 @@ import Footer from './components/Footer.js';
 import Login from './components/Login.js';
 import Menu from './components/Menu.js';
 import Admin from './components/Admin.js';
+import Orders from './components/Orders.js';
 
 function App() {
   const [role, setRole] = useState('');
@@ -27,6 +28,10 @@ function App() {
 
             <Route path='/menu'>
               <Menu cart={cart} setCart={setCart} />
+            </Route>
+
+            <Route path='/orders'>
+              <Orders />
             </Route>
           </Switch>
         <Footer />
