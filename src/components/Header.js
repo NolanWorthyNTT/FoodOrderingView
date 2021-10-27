@@ -1,12 +1,26 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
 function Header(props) {
+    const history = useHistory();
+
+    const onClick = (e) => {
+        props.setRole('');
+        props.setUsername('');
+        history.push('/');
+    }
+
+    const renderUsernameAndLogout = () => {
+        if(props.role === 'admin' || props.role === 'user') {
+            return <div>{props.username} - <button onClick={onClick}>Logout</button></div>;
+        }
+    }
+
     return(
         <div>
             <header>
                 <h1 className="top">Food Ordering App</h1>
                 <nav>
-                    {props.role === 'no user' || props.role === '' ? '' : props.username + ' - ' + <Link to='/'>Logout</Link>}
+                    {renderUsernameAndLogout()}
                 </nav>
             </header>
         </div>
