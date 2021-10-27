@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import MenuItem from './MenuItem.js';
+import CartAside from './CartAside.js';
 
 function Menu(props) {
     const [dishes, setDishes] = useState([]);
@@ -26,10 +28,24 @@ function Menu(props) {
 
     return (
         <div>
-            <h2>Menu</h2>
-            {dishes.map((d) => (
-                <p key={d.dishId}>{d.dishName}</p>
-            ))}
+            <h2>Today's Menu</h2>
+            <div className="menu-grid">
+                {dishes.map((dish) => (
+                    <MenuItem key={dish.dishId}
+                                dishId={dish.dishId}
+                                dishName={dish.dishName}
+                                qtyAvailable={dish.qtyAvailable}
+                                pricePer={dish.pricePer}
+                                imageUrl={dish.imageUrl}
+                                ingredients={dish.ingredients}
+                                cart={props.cart}
+                                setCart={props.setCart}
+                    />
+                ))}
+            </div>
+            <div className="cart-aside">
+                <CartAside cart={props.cart} setCart={props.setCart} />
+            </div>
         </div>
     );
 }
