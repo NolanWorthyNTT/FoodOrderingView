@@ -3,6 +3,7 @@ import OrderItem from './OrderItem.js';
 
 function Orders(props) {
     const [orders, setOrders] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         sendHttpRequest('GET', 'http://localhost:8080/orders?id=' + props.userId).then(responseData => {
@@ -28,7 +29,9 @@ function Orders(props) {
     return (
         <div>
             <h2>My Orders</h2>
-            {orders.map((order) => (
+            <label forHtml="search">Search by order number:</label>
+            <input type="text" id="search" name="search" placeholder="&quot;ORD-...&quot;" value={search} onChange={(e) => setSearch(e.target.value)} /><br />
+            {orders.filter(order => ('ORD-'+order.order.orderId).includes(search)).map((order) => (
                 <OrderItem key={order.order.orderId}
                                     orderId={order.order.orderId}
                                     dateOfOrder={order.order.dateOfOrder}
