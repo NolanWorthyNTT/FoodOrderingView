@@ -4,8 +4,8 @@ function CartAsideItem(props) {
     const onMinusClick = () => {
         var existingIndex = props.cart.findIndex((o) => o.dishId === props.dishId);
         var localCart = props.cart.slice();
-        if(localCart[existingIndex].qtyToBuy > 1) {
-            localCart[existingIndex].qtyToBuy -= 1;
+        if(localCart[existingIndex].qty > 1) {
+            localCart[existingIndex].qty -= 1;
             props.setCart(localCart);
         }
     }
@@ -14,8 +14,8 @@ function CartAsideItem(props) {
         var existingIndex = props.cart.findIndex((o) => o.dishId === props.dishId);
         var localCart = props.cart.slice();
         // 32767 is max value of SQL SMALLINT - the type of qtyAvailable in Menu table
-        if(localCart[existingIndex].qtyToBuy < 32767) {
-            localCart[existingIndex].qtyToBuy += 1;
+        if(localCart[existingIndex].qty < 32767) {
+            localCart[existingIndex].qty += 1;
             props.setCart(localCart);
         }
     }
@@ -27,7 +27,7 @@ function CartAsideItem(props) {
                 <div><h5>{props.dishName} - ${props.pricePer}</h5></div>
                 <div><p>{props.ingredients}</p></div>
                 <button type="button" className="cart-aside-item-minus-btn" onClick={onMinusClick}>-</button>
-                {props.cart[props.cart.findIndex((o) => o.dishId === props.dishId)].qtyToBuy}
+                {props.cart[props.cart.findIndex((o) => o.dishId === props.dishId)].qty}
                 <button type="button" className="cart-aside-item-plus-btn" onClick={onPlusClick}>+</button>
             </div>
         </div>
