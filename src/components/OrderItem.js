@@ -8,7 +8,7 @@ function OrderItem(props) {
 
     return (
         <div className="order-item">
-            Order ID: {props.orderId}
+            Order ID: ORD-{props.orderId}
             <p>Total: ${props.total.toFixed(2)} | Date: {props.dateOfOrder}</p>
             <button onClick={toggleShow}>Show Details</button>
             {show ? (<div>{props.orderDetails.map((item) => (
