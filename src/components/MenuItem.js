@@ -25,12 +25,17 @@ function MenuItem(props) {
 
     const addToCart = (e) => {
         if(qty > 0) {
-            var existingIndex = props.cart.findIndex((o) => o.dishId === props.dishId);
-            if(existingIndex > -1) {
+            var indexInCart = props.cart.findIndex((o) => o.dishId === props.dishId);
+            var indexInMenu = props.menu.findIndex((o) => o.dishId === props.dishId);
+            if(indexInCart > -1) {
                 // if item being added to cart is already in cart, add to its quantity
                 var localCart = props.cart.slice();
-                localCart[existingIndex].qty += qty;
-                props.setCart(localCart);
+                if(localCart[indexInCart].qty + qty <= props.menu[indexInMenu].qty) {
+                    localCart[indexInCart].qty += qty;
+                    props.setCart(localCart);
+                } else {
+                    alert('Exceeds remaining quantity of dish');
+                }
             } else {
                 // otherwise, add new item to existing cart
                 props.setCart([...props.cart, {
