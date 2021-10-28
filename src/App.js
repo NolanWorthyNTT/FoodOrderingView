@@ -33,7 +33,7 @@ function App() {
             </Route>
 
             <Route path='/orders'>
-              <Orders />
+              <Orders userId={userId} />
             </Route>
           </Switch>
         <Footer />
