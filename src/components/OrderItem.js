@@ -1,15 +1,20 @@
-
+import { useState } from 'react';
+import OrderItemDetails from './OrderItemDetails';
 
 function OrderItem(props) {
-    const showDetails = () => {
+    const [show, setShow] = useState(false);
 
-    }
+    const toggleShow = () => setShow(!show);
 
     return (
         <div className="order-item">
             Order ID: {props.orderId}
-            <p>Total: ${props.total.toFixed(2)} - {props.dateOfOrder}</p>
-            <button className="order-item-show-details-btn" onClick={showDetails}>Show Details</button>
+            <p>Total: ${props.total.toFixed(2)} | Date: {props.dateOfOrder}</p>
+            <button onClick={toggleShow}>Show Details</button>
+            {show ? (<div>{props.orderDetails.map((item) => (
+                    <OrderItemDetails key={item.dishId} item={item} />
+                ))}</div>) : null}
+                
         </div>
     )
 }
