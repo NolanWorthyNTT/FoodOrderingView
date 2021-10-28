@@ -12,6 +12,7 @@ function App() {
   const [role, setRole] = useState('');
   const [username, setUsername] = useState('');
   const [userId, setUserId] = useState(-1);
+  const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState([]);
 
   return (
@@ -28,7 +29,7 @@ function App() {
             </Route>
 
             <Route path='/menu'>
-              <Menu cart={cart} setCart={setCart} userId={userId} />
+              <Menu menu={menu} setMenu={setMenu} cart={cart} setCart={setCart} userId={userId} />
             </Route>
 
             <Route path='/orders'>
