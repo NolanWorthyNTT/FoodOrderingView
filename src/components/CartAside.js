@@ -54,7 +54,7 @@ function CartAside(props) {
                     <CartAsideItem key={cartItem.dishId}
                                 dishId={cartItem.dishId}
                                 dishName={cartItem.dishName}
-                                qtyToBuy={cartItem.qtyToBuy}
+                                qtyToBuy={cartItem.qty}
                                 pricePer={cartItem.pricePer}
                                 imageUrl={cartItem.imageUrl}
                                 ingredients={cartItem.ingredients}
