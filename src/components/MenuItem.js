@@ -17,7 +17,6 @@ function MenuItem(props) {
     }
 
     const onQtyBoxChange = (e) => {
-        console.log('change');
         if(e.target.value >= 0 && e.target.value <= props.qty) {
             setQty(e.target.value);
         }
