@@ -28,7 +28,7 @@ function App() {
             </Route>
 
             <Route path='/menu'>
-              <Menu cart={cart} setCart={setCart} />
+              <Menu cart={cart} setCart={setCart} userId={userId} />
             </Route>
 
             <Route path='/orders'>
