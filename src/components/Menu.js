@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import MenuItem from './MenuItem.js';
 import CartAside from './CartAside.js';
 
 function Menu(props) {
-    const [dishes, setDishes] = useState([]);
+    const { setMenu } = props;
 
     const getMenu = () => {
         const promise = new Promise((resolve, reject) => {
@@ -22,15 +22,15 @@ function Menu(props) {
 
     useEffect(() => {
         getMenu().then(responseData => {
-            setDishes(responseData);
+            setMenu(responseData);
         });
-    }, []);
+    }, [setMenu]);
 
     return (
         <div>
             <h2>Today's Menu</h2>
             <div className="menu-grid">
-                {dishes.map((dish) => (
+                {props.menu.filter(dish => dish.qty > 0).map((dish) => (
                     <MenuItem key={dish.dishId}
                                 dishId={dish.dishId}
                                 dishName={dish.dishName}
@@ -38,13 +38,14 @@ function Menu(props) {
                                 pricePer={dish.pricePer}
                                 imageUrl={dish.imageUrl}
                                 ingredients={dish.ingredients}
+                                menu={props.menu}
                                 cart={props.cart}
                                 setCart={props.setCart}
                     />
                 ))}
             </div>
             <div className="cart-aside">
-                <CartAside cart={props.cart} setCart={props.setCart} userId={props.userId} />
+                <CartAside menu={props.menu} cart={props.cart} setCart={props.setCart} userId={props.userId} />
             </div>
         </div>
     );
