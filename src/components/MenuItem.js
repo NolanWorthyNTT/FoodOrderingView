@@ -11,14 +11,14 @@ function MenuItem(props) {
 
     const onPlusClick = () => {
         // 32767 is max value of SQL SMALLINT - the type of qtyAvailable in Menu table
-        if(qty < 32767) {
+        if(qty < props.qty) {
             setQty(qty+1);
         }
     }
 
     const onQtyBoxChange = (e) => {
         console.log('change');
-        if(e.target.value >= 0 && e.target.value <= 32767) {
+        if(e.target.value >= 0 && e.target.value <= props.qty) {
             setQty(e.target.value);
         }
     }
@@ -50,6 +50,7 @@ function MenuItem(props) {
             <img src={props.imageUrl} alt={props.dishName} className="menu-item-image" />
             <h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5>
             <p>{props.ingredients}</p>
+            <p>Remaining: {props.qty}</p>
             <div className="menu-item-footer">
                 <button type="button" className="menu-item-minus-btn" onClick={onMinusClick}>-</button>
                 <input type="text" className="menu-item-qty-text" size="5" value={qty} onChange={onQtyBoxChange} />
