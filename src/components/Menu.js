@@ -44,7 +44,7 @@ function Menu(props) {
                 ))}
             </div>
             <div className="cart-aside">
-                <CartAside cart={props.cart} setCart={props.setCart} />
+                <CartAside cart={props.cart} setCart={props.setCart} userId={props.userId} />
             </div>
         </div>
     );
