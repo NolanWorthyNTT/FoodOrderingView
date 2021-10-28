@@ -29,12 +29,13 @@ function Orders(props) {
         <div>
             <h2>My Orders</h2>
             {orders.map((order) => (
-                    <OrderItem key={order.orderId}
-                                orderId={order.orderId}
-                                dateOfOrder={order.dateOfOrder}
-                                total={order.total}
-                                userId={order.userId}
-                    />
+                <OrderItem key={order.order.orderId}
+                                    orderId={order.order.orderId}
+                                    dateOfOrder={order.order.dateOfOrder}
+                                    total={order.order.total}
+                                    userId={order.userId}
+                                    orderDetails={order.dishes}
+                />  
                 ))}
         </div>
     )
