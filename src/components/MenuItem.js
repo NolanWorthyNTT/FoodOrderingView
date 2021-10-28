@@ -29,14 +29,14 @@ function MenuItem(props) {
             if(existingIndex > -1) {
                 // if item being added to cart is already in cart, add to its quantity
                 var localCart = props.cart.slice();
-                localCart[existingIndex].qtyToBuy += qty;
+                localCart[existingIndex].qty += qty;
                 props.setCart(localCart);
             } else {
                 // otherwise, add new item to existing cart
                 props.setCart([...props.cart, {
                     dishId: props.dishId,
                     dishName: props.dishName,
-                    qtyToBuy: qty,
+                    qty: qty,
                     pricePer: props.pricePer,
                     imageUrl: props.imageUrl,
                     ingredients: props.ingredients
