@@ -3,7 +3,15 @@ import { useHistory } from 'react-router-dom'
 function Header(props) {
     const history = useHistory();
 
-    const onClick = (e) => {
+    const onMenu = (e) => {
+        history.push('/menu');
+    }
+
+    const onOrders = (e) => {
+        history.push('/orders');
+    }
+
+    const onLogout = (e) => {
         props.setRole('');
         props.setUsername('');
         props.setUserId(-1);
@@ -12,7 +20,7 @@ function Header(props) {
 
     const renderUsernameAndLogout = () => {
         if(props.role === 'admin' || props.role === 'user') {
-            return <div>{props.username} - <button onClick={onClick}>Logout</button></div>;
+            return <div>{props.username} - <button onClick={onMenu}>Menu</button> - <button onClick={onOrders}>My Orders</button> - <button onClick={onLogout}>Logout</button></div>;
         }
     }
 
