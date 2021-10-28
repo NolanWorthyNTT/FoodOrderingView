@@ -34,7 +34,7 @@ function Menu(props) {
                     <MenuItem key={dish.dishId}
                                 dishId={dish.dishId}
                                 dishName={dish.dishName}
-                                qtyAvailable={dish.qtyAvailable}
+                                qty={dish.qty}
                                 pricePer={dish.pricePer}
                                 imageUrl={dish.imageUrl}
                                 ingredients={dish.ingredients}
