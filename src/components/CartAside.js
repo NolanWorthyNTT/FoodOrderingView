@@ -33,17 +33,19 @@ function CartAside(props) {
     }
 
     const onClick = () => {
-        sendHttpRequest('POST', 'http://localhost:8080/placeOrder', {
-            "order": {
-                "total": total,
-                "userId": props.userId
-            },
-            "dishesInOrder": props.cart
-        }).then(responseData => {
-            props.setCart([]);
+        if(props.cart.length > 0) {
+            sendHttpRequest('POST', 'http://localhost:8080/placeOrder', {
+                "order": {
+                    "total": total,
+                    "userId": props.userId
+                },
+                "dishesInOrder": props.cart
+            }).then(responseData => {
+                props.setCart([]);
 
-            history.push('/orders');
-        });
+                history.push('/orders');
+            });
+        }
     }
 
     return (
@@ -58,11 +60,12 @@ function CartAside(props) {
                                 pricePer={cartItem.pricePer}
                                 imageUrl={cartItem.imageUrl}
                                 ingredients={cartItem.ingredients}
+                                menu={props.menu}
                                 cart={props.cart}
                                 setCart={props.setCart}
                     />
                 ))}
-                Total: ${total.toFixed(2)} <button type="button" className="cart-aside-proceed-btn" onClick={onClick}>Proceed To Checkout</button>
+                Total: ${total.toFixed(2)} <button type="button" className="cart-aside-place-order-btn" onClick={onClick}>Place Order</button>
             </div>
         </div>
     )
