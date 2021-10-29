@@ -1,6 +1,7 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
 function CartAsideItem(props) {
+    const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
 
     const onMinusClick = () => {
         var indexInCart = props.cart.findIndex((o) => o.dishId === props.dishId);
@@ -33,7 +34,7 @@ function CartAsideItem(props) {
 
     return (
         <div className="cart-aside-item">
-            <img src={props.imageUrl} alt={props.dishName} className="cart-aside-item-image" />
+            <img src={props.imageUrl ? props.imageUrl : defaultImage} alt={props.dishName} className="cart-aside-item-image" />
             <div className="cart-aside-item-vertical">
                 <div><h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5></div>
                 <div><p>{props.ingredients}</p></div>
