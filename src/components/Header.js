@@ -18,9 +18,13 @@ function Header(props) {
         history.push('/');
     }
 
-    const renderUsernameAndLogout = () => {
-        if(props.role === 'admin' || props.role === 'user') {
+    const Buttons = () => {
+        if(props.role === 'user') {
             return <div>{props.username} - <button onClick={onMenu}>Menu</button> - <button onClick={onOrders}>My Orders</button> - <button onClick={onLogout}>Logout</button></div>;
+        } else if(props.role === 'admin') {
+            return <div>{props.username} - <button onClick={onLogout}>Logout</button></div>;
+        } else {
+            return null;
         }
     }
 
@@ -29,7 +33,7 @@ function Header(props) {
             <header>
                 <h1 className="top">Food Ordering App</h1>
                 <nav>
-                    {renderUsernameAndLogout()}
+                    <Buttons />
                 </nav>
             </header>
         </div>
