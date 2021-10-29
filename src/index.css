@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(255, 236, 211);
+}
+
 nav {
   text-align: right;
 }
@@ -6,12 +10,153 @@ header {
   border-bottom: 1px solid black;
 }
 
-#login-head {
-  text-align: left;
+.login-head {
+  text-align: center;
 }
 
-#login-form {
-  border: 1px solid blue;
+.login-form {
+  border: 1px solid black;
+  margin: auto;
+  display: inline-block;
+  padding: 10px;
+}
+
+.menu-screen {
+  display: flex;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  float: left;
+  width: 75%;
+}
+
+.menu-grid-item {
+  background-color: white;
+  color: black;
+  margin: 2px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.menu-item-image {
+  object-fit: cover;
+  height: 100px;
+  width: auto;
+}
+
+.menu-item-minus-btn {
+  background-color: black;
+  color: white;
+}
+
+.menu-item-qty-text {
+  text-align: center;
+  
+}
+
+.menu-item-plus-btn {
+  background-color: black;
+  color: white;
+}
+
+.menu-item-add-to-cart-btn {
+  background-color: orange;
+}
+
+.menu-item-footer {
+  float: bottom;
+}
+
+.cart-aside {
+  float: right;
+  width: 24%;
+  border-left: 1px solid black;
+}
+
+.cart-aside-heading {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.cart-aside-item {
+  display: flex;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.cart-aside-item-vertical {
+  flex-direction: column;
+}
+
+.cart-aside-item-image {
+  height: 100px;
+  width: auto;
+}
+
+.order-item {
+  background-color: rgb(177, 154, 124);
+  color: black;
+  text-align: left;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.order-item-details {
+  display: flex;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.order-item-details-image {
+  height: 100px;
+  width: auto;
+}
+
+.admin-menu-item {
+  background-color: white;
+  color: black;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+}
+
+.admin-menu-item-image {
+  height: 50px;
+  width: auto;
+  float:right;
+}
+
+.label-above-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-above-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-menu {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.past-dish-item-image {
+  width: 100px;
+  height: auto;
 }
 
 footer {
