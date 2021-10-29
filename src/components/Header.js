@@ -15,6 +15,7 @@ function Header(props) {
         props.setRole('');
         props.setUsername('');
         props.setUserId(-1);
+        props.setCart([]);
         history.push('/');
     }
 

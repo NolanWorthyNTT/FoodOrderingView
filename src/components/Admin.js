@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import AdminMenuItem from './AdminMenuItem.js';
 import PastDishItem from './PastDishItem.js';
 
-function Admin() {
+function Admin(props) {
     const [adminMenu, setAdminMenu] = useState([]);
     const [dishes, setDishes] = useState([]);
+    const history = useHistory();
 
     const getMenu = () => {
         const promise = new Promise((resolve, reject) => {
@@ -52,6 +54,17 @@ function Admin() {
         })
         return promise;
     }
+
+    useEffect(() => {
+        if(props.role !== 'admin') {
+            alert('You do not have access to this page');
+            props.setRole('');
+            props.setUsername('');
+            props.setUserId(-1);
+            props.setCart([]);
+            history.push('/');
+        }
+    });
 
     useEffect(() => {
         getMenu().then(responseData => {

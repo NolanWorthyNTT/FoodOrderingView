@@ -18,22 +18,35 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header role={role} setRole={setRole} username={username} setUsername={setUsername} setUserId={setUserId} />
+        <Header role={role} setRole={setRole} username={username} setUsername={setUsername} setUserId={setUserId} setCart={setCart} />
           <Switch>
             <Route exact path='/'>
               <Login role={role} setRole={setRole} username={username} setUsername={setUsername} userId={userId} setUserId={setUserId} />
             </Route>
 
             <Route path='/admin'>
-              <Admin />
+              <Admin role={role} setRole={setRole}
+                      username={username} setUsername={setUsername}
+                      userId={userId} setUserId={setUserId}
+                      menu={menu} setMenu={setMenu}
+                      cart={cart} setCart={setCart}/>
             </Route>
 
             <Route path='/menu'>
-              <Menu menu={menu} setMenu={setMenu} cart={cart} setCart={setCart} userId={userId} />
+              <Menu role={role} setRole={setRole}
+                    username={username} setUsername={setUsername}
+                    userId={userId} setUserId={setUserId}
+                    menu={menu} setMenu={setMenu}
+                    cart={cart} setCart={setCart}
+              />
             </Route>
 
             <Route path='/orders'>
-              <Orders userId={userId} />
+              <Orders role={role} setRole={setRole}
+                      username={username} setUsername={setUsername}
+                      userId={userId} setUserId={setUserId}
+                      cart={cart} setCart={setCart}
+              />
             </Route>
           </Switch>
         <Footer />

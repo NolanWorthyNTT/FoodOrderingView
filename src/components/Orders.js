@@ -1,9 +1,22 @@
 import { useState, useEffect } from 'react';
 import OrderItem from './OrderItem.js';
+import { useHistory } from 'react-router-dom';
 
 function Orders(props) {
     const [orders, setOrders] = useState([]);
     const [search, setSearch] = useState('');
+    const history = useHistory();
+
+    useEffect(() => {
+        if(props.role !== 'user') {
+            alert('You do not have access to this page');
+            props.setRole('');
+            props.setUsername('');
+            props.setUserId(-1);
+            props.setCart([]);
+            history.push('/');
+        }
+    });
 
     useEffect(() => {
         sendHttpRequest('GET', 'http://localhost:8080/orders?id=' + props.userId).then(responseData => {

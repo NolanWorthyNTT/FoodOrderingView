@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import MenuItem from './MenuItem.js';
 import CartAside from './CartAside.js';
 
 function Menu(props) {
     const { setMenu } = props;
+    const history = useHistory();
 
     const getMenu = () => {
         const promise = new Promise((resolve, reject) => {
@@ -19,6 +21,17 @@ function Menu(props) {
         })
         return promise;
     }
+
+    useEffect(() => {
+        if(props.role !== 'user') {
+            alert('You do not have access to this page');
+            props.setRole('');
+            props.setUsername('');
+            props.setUserId(-1);
+            props.setCart([]);
+            history.push('/');
+        }
+    });
 
     useEffect(() => {
         getMenu().then(responseData => {
