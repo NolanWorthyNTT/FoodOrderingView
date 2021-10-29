@@ -81,7 +81,7 @@ function Admin(props) {
     }
     
     const submitMenu = (e) => {
-        var dishesHaveNeededInput = false;
+        var dishesHaveNeededInput = true;
         for(const dish of adminMenu) {
             if(!dish.dishName || dish.pricePer === null || dish.pricePer < 0 || dish.qty === null || dish.qty < 0) {
                 dishesHaveNeededInput = false;
