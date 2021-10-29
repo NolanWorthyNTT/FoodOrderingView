@@ -3,6 +3,8 @@ import { useState } from 'react';
 function MenuItem(props) {
     const [qty, setQty] = useState(0);
 
+    const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+
     const onMinusClick = () => {
         if(qty > 0) {
             setQty(qty-1);
@@ -51,7 +53,7 @@ function MenuItem(props) {
 
     return (
         <div className="menu-grid-item">
-            <img src={props.imageUrl} alt={props.dishName} className="menu-item-image" />
+            <img src={props.imageUrl ? props.imageUrl : defaultImage} alt={props.dishName} className="menu-item-image" />
             <h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5>
             <p>{props.ingredients}</p>
             <p>Remaining: {props.qty}</p>
