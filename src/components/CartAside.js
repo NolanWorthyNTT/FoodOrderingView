@@ -48,11 +48,19 @@ function CartAside(props) {
         }
     }
 
+    const TotalAndButton = () => {
+        return (
+            <div>
+                Total: ${total.toFixed(2)} <button type="button" className="cart-aside-place-order-btn" onClick={onClick}>Place Order</button>
+            </div>
+        )
+    }
+
     return (
         <div>
             <div className="cart-aside-list">
                 <h2 className="cart-aside-heading">My Cart</h2>
-                {props.cart.map((cartItem) => (
+                {(props.cart.length === 0 ? 'Nothing in cart' : props.cart.map((cartItem) => (
                     <CartAsideItem key={cartItem.dishId}
                                 dishId={cartItem.dishId}
                                 dishName={cartItem.dishName}
@@ -64,8 +72,8 @@ function CartAside(props) {
                                 cart={props.cart}
                                 setCart={props.setCart}
                     />
-                ))}
-                Total: ${total.toFixed(2)} <button type="button" className="cart-aside-place-order-btn" onClick={onClick}>Place Order</button>
+                )))}
+                {props.cart.length === 0 ? '' : <TotalAndButton />}
             </div>
         </div>
     )

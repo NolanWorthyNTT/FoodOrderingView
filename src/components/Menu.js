@@ -29,23 +29,25 @@ function Menu(props) {
     return (
         <div>
             <h2>Today's Menu</h2>
-            <div className="menu-grid">
-                {props.menu.filter(dish => dish.qty > 0).map((dish) => (
-                    <MenuItem key={dish.dishId}
-                                dishId={dish.dishId}
-                                dishName={dish.dishName}
-                                qty={dish.qty}
-                                pricePer={dish.pricePer}
-                                imageUrl={dish.imageUrl}
-                                ingredients={dish.ingredients}
-                                menu={props.menu}
-                                cart={props.cart}
-                                setCart={props.setCart}
-                    />
-                ))}
-            </div>
-            <div className="cart-aside">
-                <CartAside menu={props.menu} cart={props.cart} setCart={props.setCart} userId={props.userId} />
+            <div className="menu-screen">
+                <div className="menu-grid">
+                    {props.menu.filter(dish => dish.qty > 0).map((dish) => (
+                        <MenuItem key={dish.dishId}
+                                    dishId={dish.dishId}
+                                    dishName={dish.dishName}
+                                    qty={dish.qty}
+                                    pricePer={dish.pricePer}
+                                    imageUrl={dish.imageUrl}
+                                    ingredients={dish.ingredients}
+                                    menu={props.menu}
+                                    cart={props.cart}
+                                    setCart={props.setCart}
+                        />
+                    ))}
+                </div>
+                <div className="cart-aside">
+                    <CartAside menu={props.menu} cart={props.cart} setCart={props.setCart} userId={props.userId} />
+                </div>
             </div>
         </div>
     );
