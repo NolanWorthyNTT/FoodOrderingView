@@ -80,10 +80,10 @@ function AdminMenuItem(props) {
             </div>
             <div className="label-above-input">
                 <label forHtml="pricePer">Price per:</label>
-                <input type="number" id="pricePer" min="0.01" step="0.01" value={Number(props.pricePer).toFixed(2)} onChange={onPricePerChange} />
+                <input type="number" id="pricePer" min="0.00" step="0.01" value={Number(props.pricePer).toFixed(2)} onChange={onPricePerChange} />
             </div>
             <div className="label-above-input">
-                <label forHtml="qty">Price per:</label>
+                <label forHtml="qty">Quantity available:</label>
                 <div>
                     <button type="button" onClick={onMinusClick}>-</button>
                     <input type="text" value={props.qty} onChange={onQtyBoxChange} />
