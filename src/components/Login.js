@@ -65,8 +65,8 @@ function Login(props) {
 
     return (
         <div>
-            <h3 id="login-head">Log In</h3>
-            <form id="login-form" onSubmit={onSubmit}>
+            <h3 class="login-head">Log In</h3>
+            <form class="login-form" onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label><br />
                 <input type="text" id="username" name="username" value={props.username} onChange={(e) => props.setUsername(e.target.value)} /><br />
                 <label htmlFor="password">Password</label><br />
