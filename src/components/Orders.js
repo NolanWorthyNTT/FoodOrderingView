@@ -29,17 +29,21 @@ function Orders(props) {
     return (
         <div>
             <h2>My Orders</h2>
-            <label htmlFor="search">Search by order number:</label>
-            <input type="text" id="search" name="search" placeholder="&quot;ORD-...&quot;" value={search} onChange={(e) => setSearch(e.target.value)} /><br />
-            {orders.filter(order => ('ORD-'+order.order.orderId).includes(search)).map((order) => (
-                <OrderItem key={order.order.orderId}
-                                    orderId={order.order.orderId}
-                                    dateOfOrder={order.order.dateOfOrder}
-                                    total={order.order.total}
-                                    userId={order.userId}
-                                    orderDetails={order.dishes}
-                />  
-                ))}
+            {orders.length === 0 ? 'No orders' :
+                <div>
+                    <label htmlFor="search">Search by order number:</label>
+                    <input type="text" id="search" name="search" placeholder="&quot;ORD-...&quot;" value={search} onChange={(e) => setSearch(e.target.value)} /><br />
+                    {orders.filter(order => ('ORD-'+order.order.orderId).includes(search)).map((order) => (
+                        <OrderItem key={order.order.orderId}
+                                            orderId={order.order.orderId}
+                                            dateOfOrder={order.order.dateOfOrder}
+                                            total={order.order.total}
+                                            userId={order.userId}
+                                            orderDetails={order.dishes}
+                        />  
+                    ))}
+                </div>
+            }
         </div>
     )
 }
