@@ -7,7 +7,7 @@ const OrderItemDetails = (props) => {
             <div>
                 <div><h5>{props.item.dishName}</h5></div>
                 <div><p>{props.item.ingredients}</p></div>
-                <p>Price: {props.item.pricePer.toFixed(2)} | Quantity purchased: {props.item.qty}</p>
+                <p>Price: ${props.item.pricePer.toFixed(2)} | Quantity purchased: {props.item.qty}</p>
             </div>
         </div>
     )
