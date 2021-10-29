@@ -65,6 +65,7 @@ function AdminMenuItem(props) {
     }
 
     const deleteItem = (e) => {
+        // delete dish from menu
         var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
@@ -75,15 +76,15 @@ function AdminMenuItem(props) {
     return (
         <div className="admin-menu-item">
             <div className="label-above-input">
-                <label forHtml="dishName">Dish name:</label>
+                <label htmlFor="dishName">Dish name:</label>
                 <input type="text" value={props.dishName} onChange={onDishNameChange} />
             </div>
             <div className="label-above-input">
-                <label forHtml="pricePer">Price per:</label>
+                <label htmlFor="pricePer">Price per:</label>
                 <input type="number" id="pricePer" min="0.00" step="0.01" value={Number(props.pricePer).toFixed(2)} onChange={onPricePerChange} />
             </div>
             <div className="label-above-input">
-                <label forHtml="qty">Quantity available:</label>
+                <label htmlFor="qty">Quantity available:</label>
                 <div>
                     <button type="button" onClick={onMinusClick}>-</button>
                     <input type="text" value={props.qty} onChange={onQtyBoxChange} />
@@ -91,11 +92,11 @@ function AdminMenuItem(props) {
                 </div>
             </div>
             <div className="label-above-input">
-                <label forHtml="ingredients">Ingredients:</label>
+                <label htmlFor="ingredients">Ingredients:</label>
                 <input type="textarea" value={props.ingredients} onChange={onIngredientsChange} />
             </div>
             <div className="label-above-input">
-                <label forHtml="imageUrl">Image URL:</label>
+                <label htmlFor="imageUrl">Image URL:</label>
                 <input type="text" value={props.imageUrl} onChange={onImageUrlChange} />
             </div>
             <FaTrashAlt style={{ cursor: 'pointer' }} onClick={deleteItem} />
