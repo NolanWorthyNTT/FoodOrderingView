@@ -14,8 +14,10 @@ function AdminMenuItem(props) {
         var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
+        if(localAdminMenu[indexInAdminMenu].pricePer >= 0) {
         localAdminMenu[indexInAdminMenu].pricePer = e.target.value;
         props.setAdminMenu(localAdminMenu);
+        }
     }
     
     const onMinusClick = (e) => {
@@ -81,7 +83,7 @@ function AdminMenuItem(props) {
             </div>
             <div className="label-above-input">
                 <label htmlFor="pricePer">Price per:</label>
-                <input type="number" id="pricePer" min="0.00" step="0.01" value={Number(props.pricePer).toFixed(2)} onChange={onPricePerChange} />
+                <input type="number" id="pricePer" step="0.01" value={Number(props.pricePer).toFixed(2)} onChange={onPricePerChange} />
             </div>
             <div className="label-above-input">
                 <label htmlFor="qty">Quantity available:</label>
