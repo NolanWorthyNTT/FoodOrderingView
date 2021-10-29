@@ -44,7 +44,7 @@ function Menu(props) {
             <h2>Today's Menu</h2>
             <div className="menu-screen">
                 <div className="menu-grid">
-                    {props.menu.filter(dish => dish.qty > 0).map((dish) => (
+                    {props.menu.length === 0 ? 'No menu' : props.menu.filter(dish => dish.qty > 0).map((dish) => (
                         <MenuItem key={dish.dishId}
                                     dishId={dish.dishId}
                                     dishName={dish.dishName}
