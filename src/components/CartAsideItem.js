@@ -35,7 +35,7 @@ function CartAsideItem(props) {
         <div className="cart-aside-item">
             <img src={props.imageUrl} alt={props.dishName} className="cart-aside-item-image" />
             <div className="cart-aside-item-vertical">
-                <div><h5>{props.dishName} - ${props.pricePer}</h5></div>
+                <div><h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5></div>
                 <div><p>{props.ingredients}</p></div>
                 <button type="button" className="cart-aside-item-minus-btn" onClick={onMinusClick}>-</button>
                 {props.cart[props.cart.findIndex((o) => o.dishId === props.dishId)].qty}
