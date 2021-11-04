@@ -46,7 +46,7 @@ function Orders(props) {
                 <div>
                     <label htmlFor="search">Search by order number:</label>
                     <input type="text" id="search" name="search" placeholder="&quot;ORD-...&quot;" value={search} onChange={(e) => setSearch(e.target.value)} /><br />
-                    {orders.filter(order => ('ORD-'+order.order.orderId).includes(search)).map((order) => (
+                    {orders.filter(order => ('ORD-'+order.order.orderId).includes(search.toUpperCase())).map((order) => (
                         <OrderItem key={order.order.orderId}
                                             orderId={order.order.orderId}
                                             dateOfOrder={order.order.dateOfOrder}
