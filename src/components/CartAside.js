@@ -11,7 +11,7 @@ function CartAside(props) {
         setTotal(0);
         props.cart.forEach((i) => {
             /// 1.0725 == 7.25% sales tax in Charlotte
-            setTotal(total => total + ((i.pricePer * i.qty) * 1.0725));
+            setTotal(total => total + ((i.dish.pricePer * i.qty) * 1.0725));
         });
     }, [props.cart]);
 
@@ -61,13 +61,13 @@ function CartAside(props) {
             <div className="cart-aside-list">
                 <h2 className="cart-aside-heading">My Cart</h2>
                 {(props.cart.length === 0 ? 'Nothing in cart' : props.cart.map((cartItem) => (
-                    <CartAsideItem key={cartItem.dishId}
-                                dishId={cartItem.dishId}
-                                dishName={cartItem.dishName}
+                    <CartAsideItem key={cartItem.dish.dishId}
+                                dishId={cartItem.dish.dishId}
+                                dishName={cartItem.dish.dishName}
                                 qtyToBuy={cartItem.qty}
-                                pricePer={cartItem.pricePer}
-                                imageUrl={cartItem.imageUrl}
-                                ingredients={cartItem.ingredients}
+                                pricePer={cartItem.dish.pricePer}
+                                imageUrl={cartItem.dish.imageUrl}
+                                ingredients={cartItem.dish.ingredients}
                                 menu={props.menu}
                                 cart={props.cart}
                                 setCart={props.setCart}

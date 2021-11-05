@@ -3,25 +3,25 @@ import { FaTrashAlt } from 'react-icons/fa';
 function AdminMenuItem(props) {
 
     const onDishNameChange = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
-        localAdminMenu[indexInAdminMenu].dishName = e.target.value;
+        localAdminMenu[indexInAdminMenu].dish.dishName = e.target.value;
         props.setAdminMenu(localAdminMenu);
     }
 
     const onPricePerChange = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
-        if(localAdminMenu[indexInAdminMenu].pricePer >= 0) {
-        localAdminMenu[indexInAdminMenu].pricePer = e.target.value;
-        props.setAdminMenu(localAdminMenu);
+        if(localAdminMenu[indexInAdminMenu].dish.pricePer >= 0) {
+            localAdminMenu[indexInAdminMenu].dish.pricePer = e.target.value;
+            props.setAdminMenu(localAdminMenu);
         }
     }
     
     const onMinusClick = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
         if(localAdminMenu[indexInAdminMenu].qty - 1 >= 0) {
@@ -31,7 +31,7 @@ function AdminMenuItem(props) {
     }
 
     const onQtyBoxChange = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
         if(e.target.value >= 0 && e.target.value <= 32767) {
@@ -41,7 +41,7 @@ function AdminMenuItem(props) {
     }
 
     const onPlusClick = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
         if(localAdminMenu[indexInAdminMenu].qty + 1 <= 32767) {
@@ -51,24 +51,24 @@ function AdminMenuItem(props) {
     }
 
     const onIngredientsChange = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
-        localAdminMenu[indexInAdminMenu].ingredients = e.target.value;
+        localAdminMenu[indexInAdminMenu].dish.ingredients = e.target.value;
         props.setAdminMenu(localAdminMenu);
     }
 
     const onImageUrlChange = (e) => {
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
-        localAdminMenu[indexInAdminMenu].imageUrl = e.target.value;
+        localAdminMenu[indexInAdminMenu].dish.imageUrl = e.target.value;
         props.setAdminMenu(localAdminMenu);
     }
 
     const deleteItem = (e) => {
         // delete dish from menu
-        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dishId === props.dishId);
+        var indexInAdminMenu = props.adminMenu.findIndex((o) => o.dish.dishId === props.dishId);
         var localAdminMenu = props.adminMenu.slice();
 
         localAdminMenu.splice(indexInAdminMenu, 1);

@@ -77,13 +77,13 @@ function Admin(props) {
     }, []);
 
     const addDish = (e) => {
-        setAdminMenu([...adminMenu, {dishId: -1, dishName: "", qty: 0, pricePer: 0, imageUrl: "", ingredients: ""}]);
+        setAdminMenu([...adminMenu, {dish: {dishId: -1, dishName: "", pricePer: 0, imageUrl: "", ingredients: ""}, qty: 0}]);
     }
     
     const submitMenu = (e) => {
         var dishesHaveNeededInput = true;
         for(const dish of adminMenu) {
-            if(!dish.dishName || dish.pricePer === null || dish.pricePer < 0 || dish.qty === null || dish.qty < 0) {
+            if(!dish.dish.dishName || dish.dish.pricePer === null || dish.dish.pricePer < 0 || dish.qty === null || dish.qty < 0) {
                 dishesHaveNeededInput = false;
                 break;
             }
@@ -105,13 +105,13 @@ function Admin(props) {
                 <h3>Current Menu</h3>
                 <div className="admin-menu">
                     {adminMenu.map((dish) => (
-                        <AdminMenuItem key={dish.dishId}
-                                    dishId={dish.dishId}
-                                    dishName={dish.dishName}
+                        <AdminMenuItem key={dish.dish.dishId}
+                                    dishId={dish.dish.dishId}
+                                    dishName={dish.dish.dishName}
                                     qty={dish.qty}
-                                    pricePer={dish.pricePer}
-                                    imageUrl={dish.imageUrl}
-                                    ingredients={dish.ingredients}
+                                    pricePer={dish.dish.pricePer}
+                                    imageUrl={dish.dish.imageUrl}
+                                    ingredients={dish.dish.ingredients}
                                     adminMenu={adminMenu}
                                     setAdminMenu={setAdminMenu}
                                     dishes={dishes}
@@ -126,7 +126,7 @@ function Admin(props) {
                 <h3>All Past Dishes</h3>
                 <div className="past-dishes-list">
                     {/* only show dishes in All Past Dishes that aren't in menu */}
-                    {dishes.filter((dish) => !adminMenu.some(i => i.dishId === dish.dishId))
+                    {dishes.filter((dish) => !adminMenu.some(i => i.dish.dishId === dish.dishId))
                         .map((dish) => (
                             <PastDishItem key={dish.dishId}
                                             dishId={dish.dishId}

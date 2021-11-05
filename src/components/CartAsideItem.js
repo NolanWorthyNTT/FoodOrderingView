@@ -14,8 +14,8 @@ function CartAsideItem(props) {
     }
 
     const onPlusClick = () => {
-        var indexInCart = props.cart.findIndex((o) => o.dishId === props.dishId);
-        var indexInMenu = props.menu.findIndex((o) => o.dishId === props.dishId);
+        var indexInCart = props.cart.findIndex((o) => o.dish.dishId === props.dishId);
+        var indexInMenu = props.menu.findIndex((o) => o.dish.dishId === props.dishId);
         var localCart = props.cart.slice();
 
         if(localCart[indexInCart].qty < props.menu[indexInMenu].qty) {
@@ -39,7 +39,7 @@ function CartAsideItem(props) {
                 <div><h5>{props.dishName} - ${props.pricePer.toFixed(2)}</h5></div>
                 <div><p>{props.ingredients}</p></div>
                 <button type="button" className="cart-aside-item-minus-btn" onClick={onMinusClick}>-</button>
-                {props.cart[props.cart.findIndex((o) => o.dishId === props.dishId)].qty}
+                {props.cart[props.cart.findIndex((o) => o.dish.dishId === props.dishId)].qty}
                 <button type="button" className="cart-aside-item-plus-btn" onClick={onPlusClick}>+</button>
                 <FaTrashAlt style={{ cursor: 'pointer' }} onClick={deleteItem} />
             </div>

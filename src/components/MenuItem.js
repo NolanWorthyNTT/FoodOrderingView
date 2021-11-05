@@ -26,8 +26,9 @@ function MenuItem(props) {
 
     const addToCart = (e) => {
         if(qty > 0) {
-            var indexInCart = props.cart.findIndex((o) => o.dishId === props.dishId);
-            var indexInMenu = props.menu.findIndex((o) => o.dishId === props.dishId);
+            var indexInCart = props.cart.findIndex((o) => o.dish.dishId === props.dishId);
+            var indexInMenu = props.menu.findIndex((o) => o.dish.dishId === props.dishId);
+            
             if(indexInCart > -1) {
                 // if item being added to cart is already in cart, add to its quantity
                 var localCart = props.cart.slice();
@@ -40,12 +41,14 @@ function MenuItem(props) {
             } else {
                 // otherwise, add new item to existing cart
                 props.setCart([...props.cart, {
-                    dishId: props.dishId,
-                    dishName: props.dishName,
-                    qty: qty,
-                    pricePer: props.pricePer,
-                    imageUrl: props.imageUrl,
-                    ingredients: props.ingredients
+                    dish: {
+                        dishId: props.dishId,
+                        dishName: props.dishName,
+                        pricePer: props.pricePer,
+                        imageUrl: props.imageUrl,
+                        ingredients: props.ingredients
+                    },
+                    qty: qty
                 }]);
             }
         }

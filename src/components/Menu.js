@@ -44,14 +44,14 @@ function Menu(props) {
             <h2>Today's Menu</h2>
             <div className="menu-screen">
                 <div className="menu-grid">
-                    {props.menu.length === 0 ? 'No menu' : props.menu.filter(dish => dish.qty > 0).map((dish) => (
-                        <MenuItem key={dish.dishId}
-                                    dishId={dish.dishId}
-                                    dishName={dish.dishName}
-                                    qty={dish.qty}
-                                    pricePer={dish.pricePer}
-                                    imageUrl={dish.imageUrl}
-                                    ingredients={dish.ingredients}
+                    {props.menu.length === 0 ? 'No menu' : props.menu.filter(item => item.qty > 0).map((item) => (
+                        <MenuItem key={item.dish.dishId}
+                                    dishId={item.dish.dishId}
+                                    dishName={item.dish.dishName}
+                                    qty={item.qty}
+                                    pricePer={item.dish.pricePer}
+                                    imageUrl={item.dish.imageUrl}
+                                    ingredients={item.dish.ingredients}
                                     menu={props.menu}
                                     cart={props.cart}
                                     setCart={props.setCart}
